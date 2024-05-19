@@ -259,3 +259,38 @@ void GPIO_voidConfigurePorting(Config_parameters_t* Copy_Config_parameters_tPToS
 	GPIO_voidConfigureOutputSpeed(Copy_Config_parameters_tPToStruct->Port_Name, Copy_Config_parameters_tPToStruct->Pin_Num, Copy_Config_parameters_tPToStruct->Out_Speed);
 }
 
+
+
+void GPIO_voidSetInputConfigurations(u8 Copy_u8PortName, u8 Copy_u8PinNumber,u8 Copy_u8InputType)
+{
+	GPIO_voidConfigurePinDirection(Copy_u8PortName,Copy_u8PinNumber, Input_Mode);
+	GPIO_voidConfigureInpytType(Copy_u8PortName,Copy_u8PinNumber, Copy_u8InputType);
+}
+void GPIO_voidSetOutputConfigurations(u8 Copy_u8PortName, u8 Copy_u8PinNumber,u8 Copy_u8OutputType,u8 Copy_u8OutputSpeed)
+{
+	GPIO_voidConfigurePinDirection  (Copy_u8PortName, Copy_u8PinNumber, Output_Mode);
+	GPIO_voidConfigureOutputType	(Copy_u8PortName, Copy_u8PinNumber, Copy_u8OutputType);
+	GPIO_voidConfigureOutputSpeed	(Copy_u8PortName, Copy_u8PinNumber, Copy_u8OutputSpeed);
+}
+void MGPIO_voidToggle_Pin(u8 Copy_u8PortName, u8 Copy_u8PinNumber)
+{
+	if (Copy_u8PinNumber <= 15)
+	{
+
+		switch (Copy_u8PortName)
+		{
+		case GPIOA:
+			TOG_BIT(GPIOA_Pointer_Reg->GPIO_ODR,Copy_u8PinNumber);
+			break;
+		case GPIOB:
+			TOG_BIT(GPIOB_Pointer_Reg->GPIO_ODR,Copy_u8PinNumber);
+			break;
+		case GPIOC:
+			TOG_BIT(GPIOC_Pointer_Reg->GPIO_ODR,Copy_u8PinNumber);
+			break;
+		}
+	}
+	else
+	{/*return error*/
+	}
+}
