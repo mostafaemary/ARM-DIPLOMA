@@ -222,7 +222,6 @@ u8 GPIO_u8ReadPin(u8 Copy_u8PortName, u8 Copy_u8PinNumber)
 	return 5;/*5 is an error indecation*/
 }
 
-
 void GPIO_LockPin(u8 Copy_u8PortName, u8 Copy_u8PinNumber)
 {
 	switch (Copy_u8PortName)
@@ -253,9 +252,10 @@ void GPIO_LockPin(u8 Copy_u8PortName, u8 Copy_u8PinNumber)
 		break;
 	}
 }
-void GPIO_voidConfigurePorting((Config_parameters_t*)Copy_Config_parameters_tPToStruct)
+void GPIO_voidConfigurePorting(Config_parameters_t* Copy_Config_parameters_tPToStruct)
 {
 	GPIO_voidConfigurePinDirection(Copy_Config_parameters_tPToStruct->Port_Name, Copy_Config_parameters_tPToStruct->Pin_Num, Copy_Config_parameters_tPToStruct->I_O_A_A_Mode);
 	GPIO_voidConfigureOutputType(Copy_Config_parameters_tPToStruct->Port_Name, Copy_Config_parameters_tPToStruct->Pin_Num, Copy_Config_parameters_tPToStruct->OutType);
 	GPIO_voidConfigureOutputSpeed(Copy_Config_parameters_tPToStruct->Port_Name, Copy_Config_parameters_tPToStruct->Pin_Num, Copy_Config_parameters_tPToStruct->Out_Speed);
 }
+
